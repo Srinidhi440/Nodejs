@@ -2,14 +2,9 @@ pipeline {
     agent any
    
     tools {
-        nodejs 'node-js' // Matches the name you configured in Global Tools
+        nodejs 'node-lts' // Matches the name you configured in Global Tools
     }
-   stages {
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/drvasavib/Nodejs.git'
-            }
-        }
+   
     stages {
         stage('Install') {
             steps {
@@ -25,7 +20,7 @@ pipeline {
        
         stage('Build') {
             steps {
-                sh 'node server.js' // If you have a build script
+                sh 'npm run build' // If you have a build script
             }
         }
     }
