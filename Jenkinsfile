@@ -65,18 +65,4 @@ pipeline {
             }
         }
     }
-   
-    post {
-        always {
-            echo 'Pipeline completed - cleaning up'
-            // Clean workspace to save disk space
-            cleanWs()
-        }
-        success {
-            echo 'Pipeline succeeded!'
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
-    }
 }
