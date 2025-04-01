@@ -20,7 +20,7 @@ pipeline {
        
         stage('Build') {
             steps {
-                sh 'npm run build' // If you have a build script
+                sh 'node server.js' // If you have a build script
             }
         }
     }
