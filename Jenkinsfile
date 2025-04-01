@@ -4,7 +4,12 @@ pipeline {
     tools {
         nodejs 'node-js' // Matches the name you configured in Global Tools
     }
-   
+   stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: ''
+            }
+        }
     stages {
         stage('Install') {
             steps {
