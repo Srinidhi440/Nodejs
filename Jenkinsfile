@@ -1,27 +1,43 @@
 pipeline {
     agent any
-   
+
     tools {
-        nodejs 'Node-JS' // Matches the name you configured in Global Tools
+        nodejs "Node-JS"  // Ensure this matches the configured Node.js tool in Jenkins
     }
-   
+
     stages {
-        stage('Install') {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'master', url: 'https://github.com/drvasavib/Nodejs.git'
+            }
+        }
+
+        stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
-       
-        stage('Test') {
+
+        stage('Run Tests') {
             steps {
                 sh 'npm test'
             }
         }
-       
+
         stage('Build') {
             steps {
-                sh 'node server.js' // If you have a build script
+                sh 'node server.js'
             }
         }
     }
+
+    post {
+        success {
+            echo 'Build Successful!'
+        }
+        failure {
+            echo 'Build Failed!'
+        }
+    }
 }
+
