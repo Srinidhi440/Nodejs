@@ -3,7 +3,7 @@ pipeline {
    
     // Define environment variables if needed
     environment {
-        NODE_VERSION = '18'
+        NODE_VERSION = '23'
         GIT_REPO = 'https://github.com/drvasavib/Nodejs.git'
         GIT_BRANCH = 'master' // or 'main' depending on your repo
     }
